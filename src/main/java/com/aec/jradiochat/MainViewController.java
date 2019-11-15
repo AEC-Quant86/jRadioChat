@@ -18,6 +18,7 @@ public class MainViewController  implements UpdateChat {
 
 	private SerialPortActivity portActivity = new SerialPortActivity();
 	private boolean portIsOpen = false;
+	private Encryptor encryptor;
 	
 	
     @FXML
@@ -80,12 +81,24 @@ public class MainViewController  implements UpdateChat {
     @FXML
     void sendMessegeButtonClick(ActionEvent event) {
        String msg = nicknameField.getText() + ": " + messegeTextField.getText();
-       if (MessegeSender.send(msg, portActivity)) {
-           chatTextField.appendText(msg + '\n');
+       chatTextField.appendText(msg + '\n');
+       
+    //   if (cryptoCheckBox.isSelected()) 
+      //     msg = encryptor.encrypt_msg(msg, cryptoPassField.getText());
+       
+       
+       if (portActivity.sendMessege(msg) > 0) {
            messegeTextField.clear();
        }
        else
            chatTextField.appendText("Ошибка отправки сообщения" + '\n');
+    }
+    
+
+    @FXML
+    void cryptoCheckBoxStateChange(ActionEvent event) {
+       if (cryptoCheckBox.isSelected());
+           encryptor = new Encryptor(cryptoPassField.getText());
     }
     
     private void scanPorts() {
@@ -97,7 +110,9 @@ public class MainViewController  implements UpdateChat {
     
     @Override
     public void messegeReceive(String msg) {
-        // TODO Auto-generated method stub
+     //   if (cryptoCheckBox.isSelected())
+      //      msg = encryptor.decrypt_msg(msg, cryptoPassField.getText());
+       
         chatTextField.appendText(msg);
     }
     

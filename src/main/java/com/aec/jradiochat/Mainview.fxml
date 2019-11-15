@@ -121,7 +121,7 @@
                                     </BorderPane>
                                     <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                                        <center>
-                                          <CheckBox fx:id="cryptoCheckBox" mnemonicParsing="false" prefHeight="17.0" prefWidth="109.0" text="Шифрование" BorderPane.alignment="CENTER">
+                                          <CheckBox fx:id="cryptoCheckBox" mnemonicParsing="false" onAction="#cryptoCheckBoxStateChange" prefHeight="17.0" prefWidth="109.0" text="Шифрование" BorderPane.alignment="CENTER">
                                              <BorderPane.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </BorderPane.margin></CheckBox>

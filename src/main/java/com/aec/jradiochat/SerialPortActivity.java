@@ -24,12 +24,12 @@ public class SerialPortActivity implements SerialPortDataListener {
     }
     
     
-    public int sendMessege(String msg) {
-        // int lenght = msg.length();
+    public int sendMessege(String msg) { //Изменить метод для возможности отправки зашифрованного сообщения
         msg += '\n';
         msg = " " + msg;
-        byte[] out = msg.getBytes();
+        
         try {
+            byte[] out = msg.getBytes("UTF-8");
             return port.writeBytes(out, out.length);
         } 
         catch (Exception e) {
@@ -87,7 +87,7 @@ public class SerialPortActivity implements SerialPortDataListener {
     }
     
     @Override
-    public void serialEvent(SerialPortEvent event) {
+    public void serialEvent(SerialPortEvent event) { //Изменить метод для возможности приема зашифрованного сообщения
 
         try {
             Thread.sleep(100);
