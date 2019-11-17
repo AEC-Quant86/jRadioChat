@@ -25,7 +25,7 @@ public class SerialPortActivity implements SerialPortDataListener {
     
     
     public int sendMessege(String msg) { //Изменить метод для возможности отправки зашифрованного сообщения
-        msg += '\n';
+        //msg += '\n';
         msg = " " + msg;
         
         try {

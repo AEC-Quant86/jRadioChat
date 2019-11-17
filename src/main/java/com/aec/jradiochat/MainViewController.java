@@ -13,6 +13,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 public class MainViewController  implements UpdateChat {
 
@@ -57,6 +59,22 @@ public class MainViewController  implements UpdateChat {
     @FXML
     private Button sendMessegeButton;
 
+
+    @FXML
+	void enterSend(KeyEvent event) {
+		if (event.getCode() == KeyCode.ENTER) {
+			String msg = nicknameField.getText() + ": " + messegeTextField.getText();
+			chatTextField.appendText(msg);
+			if (portActivity.sendMessege(msg) > 0) {
+		           messegeTextField.clear();
+		       }
+		       else
+		           chatTextField.appendText("Ошибка отправки сообщения" + '\n');
+		    }
+		}
+		
+	
+    
     @FXML
     void findPortsButtonClick(ActionEvent event) {
     	scanPorts();
@@ -97,8 +115,8 @@ public class MainViewController  implements UpdateChat {
 
     @FXML
     void cryptoCheckBoxStateChange(ActionEvent event) {
-       if (cryptoCheckBox.isSelected());
-           encryptor = new Encryptor(cryptoPassField.getText());
+      // if (cryptoCheckBox.isSelected());
+        //   encryptor = new Encryptor(cryptoPassField.getText());
     }
     
     private void scanPorts() {
