@@ -64,7 +64,8 @@ public class MainViewController  implements UpdateChat {
 	void enterSend(KeyEvent event) {
 		if (event.getCode() == KeyCode.ENTER) {
 			String msg = nicknameField.getText() + ": " + messegeTextField.getText();
-			chatTextField.appendText(msg);
+			msg = msg.substring(0, msg.length() - 1);
+			this.messegeReceive(msg);
 			if (portActivity.sendMessege(msg) > 0) {
 		           messegeTextField.clear();
 		       }
@@ -99,7 +100,8 @@ public class MainViewController  implements UpdateChat {
     @FXML
     void sendMessegeButtonClick(ActionEvent event) {
        String msg = nicknameField.getText() + ": " + messegeTextField.getText();
-       chatTextField.appendText(msg + '\n');
+      // chatTextField.appendText(msg + "\n");
+       this.messegeReceive(msg);
        
     //   if (cryptoCheckBox.isSelected()) 
       //     msg = encryptor.encrypt_msg(msg, cryptoPassField.getText());
@@ -131,7 +133,7 @@ public class MainViewController  implements UpdateChat {
      //   if (cryptoCheckBox.isSelected())
       //      msg = encryptor.decrypt_msg(msg, cryptoPassField.getText());
        
-        chatTextField.appendText(msg);
+        chatTextField.appendText(msg + "\n");
     }
     
     @FXML

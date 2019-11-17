@@ -22,8 +22,8 @@ public class Encryptor  {
 
     private Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
     private SecretKeySpec key;
+    
     public Encryptor(String sKey) throws NoSuchAlgorithmException, NoSuchPaddingException, UnsupportedEncodingException  {
-        // TODO Auto-generated constructor stub
         Security.addProvider(new BouncyCastleProvider());
         key = new SecretKeySpec(sKey.getBytes("UTF-8"), "AES/ECB/PKCS5Padding");
     }
