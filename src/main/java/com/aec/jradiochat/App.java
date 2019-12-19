@@ -3,6 +3,7 @@ package com.aec.jradiochat;
 
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -15,14 +16,17 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-
-        	AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("MainView.fxml"));
+            AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("MainView.fxml"));
             Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             //primaryStage.setResizable(false);
             primaryStage.setTitle("jRadioChat");
             primaryStage.setScene(scene);
             primaryStage.show();
+            primaryStage.setOnCloseRequest(e -> {
+                Platform.exit();
+                System.exit(0);
+            });
         } catch (Exception e) {
             e.printStackTrace();
 
@@ -34,4 +38,5 @@ public class App extends Application {
         launch(args);
 
     }
+
 }

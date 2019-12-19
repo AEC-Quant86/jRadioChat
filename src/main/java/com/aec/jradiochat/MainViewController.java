@@ -20,7 +20,7 @@ public class MainViewController  implements UpdateChat {
 
 	private SerialPortActivity portActivity = new SerialPortActivity();
 	private boolean portIsOpen = false;
-	private Encryptor encryptor;
+	//private Encryptor encryptor;
 	
 	
     @FXML
@@ -146,10 +146,11 @@ public class MainViewController  implements UpdateChat {
         		"9600", "115200"
         		)
         		);
-        
-        
     }
 
-
-
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize();
+        portActivity.closePort();
+    }
 }
