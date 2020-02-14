@@ -20,8 +20,6 @@ public class MainViewController  implements UpdateChat {
 
 	private SerialPortActivity portActivity = new SerialPortActivity();
 	private boolean portIsOpen = false;
-	//private Encryptor encryptor;
-	
 	
     @FXML
     private Tab startTab;
@@ -40,12 +38,6 @@ public class MainViewController  implements UpdateChat {
 
     @FXML
     private TextField nicknameField;
-
-    @FXML
-    private PasswordField cryptoPassField;
-
-    @FXML
-    private CheckBox cryptoCheckBox;
 
     @FXML
     private Tab mainTab;
@@ -100,11 +92,7 @@ public class MainViewController  implements UpdateChat {
     @FXML
     void sendMessegeButtonClick(ActionEvent event) {
        String msg = nicknameField.getText() + ": " + messegeTextField.getText();
-      // chatTextField.appendText(msg + "\n");
        this.messegeReceive(msg);
-       
-    //   if (cryptoCheckBox.isSelected()) 
-      //     msg = encryptor.encrypt_msg(msg, cryptoPassField.getText());
        
        
        if (portActivity.sendMessege(msg) > 0) {
@@ -112,13 +100,6 @@ public class MainViewController  implements UpdateChat {
        }
        else
            chatTextField.appendText("Ошибка отправки сообщения" + '\n');
-    }
-    
-
-    @FXML
-    void cryptoCheckBoxStateChange(ActionEvent event) {
-      // if (cryptoCheckBox.isSelected());
-        //   encryptor = new Encryptor(cryptoPassField.getText());
     }
     
     private void scanPorts() {
@@ -130,8 +111,6 @@ public class MainViewController  implements UpdateChat {
     
     @Override
     public void messegeReceive(String msg) {
-     //   if (cryptoCheckBox.isSelected())
-      //      msg = encryptor.decrypt_msg(msg, cryptoPassField.getText());
        
         chatTextField.appendText(msg + "\n");
     }

@@ -96,16 +96,8 @@
                                           <TextField fx:id="nicknameField" BorderPane.alignment="CENTER" />
                                        </center>
                                     </BorderPane>
-                                    <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
-                                       <center>
-                                          <Label text="Пароль" BorderPane.alignment="CENTER" />
-                                       </center>
-                                    </BorderPane>
-                                    <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                       <center>
-                                          <PasswordField fx:id="cryptoPassField" BorderPane.alignment="CENTER" />
-                                       </center>
-                                    </BorderPane>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2" />
                                     <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                  </children>
